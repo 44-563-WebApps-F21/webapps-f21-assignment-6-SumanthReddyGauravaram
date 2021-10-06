@@ -24,21 +24,47 @@
 
     <input type="button" onclick="orderCar()" value="Order a car">
   </form>
+<br><br>
+  <form>
+    <label for="form1_age">Enter a property</label>
+    <input type ="text" id="form1_Property" name="form1_Property" value="color"> <br>
+
+    <label for="form1_nick">Enter a value</label>
+    <input type ="text" id="form1_Value" name="form1_Value"> <br>
+
+    <input type="button" onclick="updateCar()" value="Update the car">
+</form>
 
 
 <p id="result">This text will be replaced </p>
 
 <script> 
-let my_car;
+let my_car = {};
+
+function updateCar(){
+    console.log("Getting input")
+    redOpt = document.getElementById("form1_Property").checked
+    redOptvalue = document.getElementById("form1_Property").value
+    blueOpt = document.getElementById("form1_Value").value
+    out = document.getElementById("result")
+
+    my_car[redOpt] = blueOpt;
+
+    out.innerHTML = redOptvalue + ":" + my_car[redOpt] ;
+}
+
 function orderCar(){
-    my_car = null;
     console.log("Getting input")
     redOpt = document.getElementById("cb1_cheese").checked
     blueOpt = document.getElementById("cb1_olive").checked
     greenOpt = document.getElementById("cb1_onion").checked
+    
     out = document.getElementById("result")
-    my_car = "Electric: " +redOpt+ " ac: "+blueOpt+" gps: "+greenOpt;
 
+    my_car["Electric"] = redOpt;
+    my_car["ac"] = blueOpt;
+    my_car["gps"] = greenOpt;
+    
     out.innerHTML = my_car;
 }
 </script>
