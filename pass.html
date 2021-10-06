@@ -10,15 +10,19 @@
 
 <h2>Pass phrase by Sumanth Reddy Gauravaram</h2>
 
+<div class = "container">
+    <img id="imgClickAndChange" src="gorilla.jpg" onclick="newImage()" alt="gorilla" width="200" height="200">
+</div>
+<br>
 <form>
     <label for="secretPhrase">Enter the secret phrase </label>
     <input type ="password" id="secretPhrase" name="secret phrase" min=10 max=50 step=2 value="Let me in"> <br>
-
+    <br>
     <label for="phrase">Enter a phrase </label>
     <input type ="text" id="phrase" name="phrase" autofocus> <br>
-
+    <br>
     <input type="button" onclick="processPhrase()" value="Check the phrase">
-
+    <br>
     <p id="result">This text will be replaced </p>
 </form>
 
@@ -28,6 +32,7 @@
 <script> 
 let correct = 0;
 let wrong = 0;
+let usingImage = 1;
 function processPhrase (){
     console.log("Getting form values")
     SecretPhrase = document.getElementById("secretPhrase").value
@@ -37,12 +42,29 @@ function processPhrase (){
     if(SecretPhrase == Phrase){
         correct++;
         alert("Access allowed");
-        out.innerHTML = "Correct : " + correct;
+        out.innerHTML = "Correct : " + correct + " Wrong : " + wrong;
     }
     else{
         wrong++;
         alert("Access denied");
-        out.innerHTML = "Wrong : " + wrong;
+        out.innerHTML =  "Correct : " + correct + " Wrong : " + wrong;
+    }
+}
+
+function newImage(){
+    switch(usingImage){
+        case 1:
+            document.getElementById("imgClickAndChange").src = "gorilla.jpg";
+            usingImage++;
+            break;
+        case 2:
+            document.getElementById("imgClickAndChange").src = "ape.jpg";
+            usingImage++;
+            break;
+        case 3:
+            document.getElementById("imgClickAndChange").src = "rabbit.jpg";
+            usingImage = 1;
+            break;
     }
 }
 </script>
