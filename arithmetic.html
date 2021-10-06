@@ -18,11 +18,59 @@
 
     <input type="button" onclick="resolvpowers()" value="Compute">
 </form>
+<form>
+    <input type="radio" id="rg1_plus" name="radAnswer" value="plus" onclick="processRadio()"   
+      checked >
+    <label for="rg1_red">plus</label></br>
+  
+    <input type="radio" id="rg1_minus" name="radAnswer" onclick="processRadio()"
+       value="minus">
+    <label for="rg1_blue">minus</label></br>
+  
+    <input type="radio" id="rg1_times" name="radAnswer" onclick="processRadio()"  
+       value="times">
+    <label for="rg1_green">times</label></br>
+
+    <input type="radio" id="rg1_divide" name="radAnswer" onclick="processRadio()"  
+       value="divide">
+    <label for="rg1_green">divide</label></br>
+
+  </form>
 
 
 <p id="result">This text will be replaced </p>
+<p id="result2">This text will be replaced </p>
 
 <script> 
+
+function processRadio (){
+    console.log("Getting form values")
+    number = document.getElementById("InputNumber").value
+    exponent = document.getElementById("InputExponent").value
+    out = document.getElementById("result2")
+
+    cheese = document.getElementById("rg1_plus").checked
+    olives = document.getElementById("rg1_minus").checked
+    onions = document.getElementById("rg1_times").checked
+    carrots = document.getElementById("rg1_divide").checked
+
+    let result;
+    if(cheese){
+        result = Number(number) + Number(exponent)
+    }
+    else if(olives){
+        result = Number(number) - Number(exponent)
+    }
+    else if(onions){
+        result = Number(number) * Number(exponent)
+    }
+    else if(carrots){
+        result = Number(number) / Number(exponent)
+    }
+    
+    console.log(result)
+    out.innerHTML = "Radio Result : " +  result;
+}
 
 function resolvpowers (){
     console.log("Getting form values")
@@ -37,7 +85,7 @@ function resolvpowers (){
         result = result + " " + multiply;
     }
     console.log(result)
-    out.innerHTML = "Result : " +  result;
+    out.innerHTML = "Pow Result : " +  result;
 }
 </script>
 
