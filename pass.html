@@ -4,30 +4,45 @@
     <title>
         Diving into JavaScript
     </title>
+    <style>
+        #submit :disabled
+        {
+            border: 1px solid #999999;
+            background-color:red;
+            color:red;
+        }
+        .container{
+            background-color: aqua;
+        }
+        .form{
+            background-color: cornflowerblue;
+        }
+    </style>
 </head>
  
 <body>
 
-<h2>Pass phrase by Sumanth Reddy Gauravaram</h2>
+<h2 style="background-color: darkgreen;">Pass phrase by Sumanth Reddy Gauravaram</h2>
 
 <div class = "container">
     <img id="imgClickAndChange" src="gorilla.jpg" onclick="newImage()" alt="gorilla" width="200" height="200">
 </div>
 <br>
-<form>
+<form class="form">
     <label for="secretPhrase">Enter the secret phrase </label>
     <input type ="password" id="secretPhrase" name="secret phrase" min=10 max=50 step=2 value="Let me in"> <br>
     <br>
     <label for="phrase">Enter a phrase </label>
     <input type ="text" id="phrase" name="phrase" autofocus> <br>
     <br>
-    <input type="button" onclick="processPhrase()" value="Check the phrase">
+    <input class="Phrase" type="button" id="submit" onclick="processPhrase()" value="Check the phrase">
     <br>
     <p id="result">This text will be replaced </p>
 </form>
 
+<div>
 
-
+</div>
 
 <script> 
 let correct = 0;
@@ -43,12 +58,28 @@ function processPhrase (){
         correct++;
         alert("Access allowed");
         out.innerHTML = "Correct : " + correct + " Wrong : " + wrong;
+        wrong = 0;
     }
     else{
         wrong++;
         alert("Access denied");
         out.innerHTML =  "Correct : " + correct + " Wrong : " + wrong;
+        correct = 0;
     }
+
+    if(wrong >= 3)
+    {
+        AccountLock()
+    }
+
+}
+
+function AccountLock()
+{
+    alert("Account Locked");
+    x=document.getElementById("submit");
+    x.disabled=true;
+    window.location.href = 'index.html';
 }
 
 function newImage(){
